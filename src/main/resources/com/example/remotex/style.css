@@ -1,0 +1,97 @@
+.btn {
+  -fx--border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+  -fx--border-width: 0.125em;
+  -fx--curve-size: 0.5em;
+  -fx--blur: 30px;
+  -fx-background-color: #080312;
+  -fx-text-fill: #afffff;
+  -fx-color: #afffff;
+  -fx-cursor: hand; /* Note: cursor property doesn't accept 'pointer' in JavaFX, so I used 'hand' */
+  /* use position: relative; so that BG is only for .btn */
+  -fx-position: relative;
+  -fx-isolation: isolate;
+  -fx-display: inline-grid;
+  -fx-alignment: center;
+  -fx-padding: 0.5em 1.5em;
+  -fx-font-size: 17px;
+  -fx-border-width: 0;
+  -fx-text-transform: uppercase;
+  -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 10, 20, 0 );
+  -fx-clip-path: polygon(
+    /* Top-left */ 0% var(--curve-size),
+    var(--curve-size) 0,
+    /* top-right */ 100% 0,
+    100% calc(100% - var(--curve-size)),
+    /* bottom-right 1 */ calc(100% - var(--curve-size)) 100%,
+    /* bottom-right 2 */ 0 100%
+  );
+  -fx-transition: color 250ms;
+}
+
+.btn::after,
+.btn::before {
+  -fx-content: "";
+  -fx-position: absolute;
+  -fx-insets: 0;
+}
+
+.btn::before {
+  -fx-background-color: var(--border-color);
+  -fx-background-size: 300% 300%;
+  -fx-animation: move-bg7234 5s infinite;
+  -fx-z-index: -2;
+}
+
+@keyframes move-bg7234 {
+  0% {
+    -fx-background-position: 31% 0%;
+  }
+
+  50% {
+    -fx-background-position: 70% 100%;
+  }
+
+  100% {
+    -fx-background-position: 31% 0%;
+  }
+}
+
+.btn::after {
+  -fx-background-color: var(--bg);
+  -fx-z-index: -1;
+  -fx-clip-path: polygon(
+    /* Top-left */ var(--border-width)
+      calc(var(--curve-size) + var(--border-width) * 0.5),
+    calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+    /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    /* bottom-right 1 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+    /* bottom-right 2 */ var(--border-width) calc(100% - var(--border-width))
+  );
+  -fx-transition: clip-path 500ms;
+}
+
+.btn:where(:hover, :focused)::after {
+  -fx-clip-path: polygon(
+    /* Top-left */ calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    calc(100% - var(--border-width)) var(--border-width),
+    /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+    calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+    /* bottom-right 1 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+    /* bottom-right 2 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width))
+  );
+  -fx-transition: 200ms;
+}
+
+.btn:where(:hover, :focused) {
+  -fx-text-fill: #fff;
+}

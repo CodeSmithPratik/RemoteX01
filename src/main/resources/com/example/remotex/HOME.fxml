@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.remotex.Home">
+   <children>
+      <ImageView fx:id="imageViw1" fitHeight="700.0" fitWidth="1200.0" layoutX="-4.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@minimalist-photorealistic-road.jpg" />
+         </image></ImageView>
+      <Label layoutX="84.0" layoutY="23.0" prefHeight="70.0" prefWidth="140.0" text="Hello ," textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="37.0" />
+         </font>
+      </Label>
+      <Label id="usernm" fx:id="urname" layoutX="198.0" layoutY="32.0" prefHeight="51.0" prefWidth="558.0" textFill="#31a38e">
+         <font>
+            <Font name="Bell MT Bold" size="41.0" />
+         </font>
+      </Label>
+      <Button layoutX="109.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToClientfromHOME" prefHeight="52.0" prefWidth="230.0" text="Controller Window">
+         <font>
+            <Font size="22.0" />
+         </font></Button>
+      <Button fx:id="qxde" layoutX="535.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchToServerFromHome" pickOnBounds="false" prefHeight="51.0" prefWidth="230.0" text="Sharing Window">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
